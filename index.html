@@ -73,6 +73,7 @@
 
 									var loader = new THREE.FBXLoader();
 									var object = loader.parse( contents );
+									object.name = filename;
 
 									console.log( object );
 
