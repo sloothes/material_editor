@@ -22,7 +22,6 @@
 		<!-- FBX -->
 		<script src="/threejs/108/examples/js/libs/inflate.min.js"></script>
 		<script src="/threejs/108/examples/js/loaders/FBXLoader.js"></script>
-		<!-- FBX -->
 		<script src="/threejs/108/examples/js/loaders/OBJLoader.js"></script>
 		<script src="/threejs/108/examples/js/loaders/MTLLoader.js"></script>
 		<script src="/threejs/108/examples/js/loaders/ColladaLoader.js"></script>
@@ -57,13 +56,16 @@
 			//	container = document.createElement( "div" );
 			//	document.body.appendChild( container );
 
+			//	Camera.
 				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
 				camera.position.set( 100, 200, 300 );
 
+			//	Scene.
 				scene = new THREE.Scene();
 				scene.background = new THREE.Color( 0xa0a0a0 );
 				scene.fog = new THREE.Fog( 0xa0a0a0, 200, 1000 );
 
+			//	Lights.
 				light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
 				light.position.set( 0, 200, 0 );
 				scene.add( light );
@@ -84,23 +86,25 @@
 				mesh.receiveShadow = true;
 				scene.add( mesh );
 
+			//	Ground helper.
 				var grid = new THREE.GridHelper( 2000, 20, 0x000000, 0x000000 );
 				grid.material.opacity = 0.2;
 				grid.material.transparent = true;
 				scene.add( grid );
 
+			//	Renderer.
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.shadowMap.enabled = true;
 				document.body.appendChild( renderer.domElement );
 
+			//	Controls.
 				controls = new THREE.EditorControls( camera, renderer.domElement );
 				controls.center.set( 0, 100, 0 );
 
+			//	onResize.
 				window.addEventListener( "resize", onWindowResize, false );
-
-
 
 			}
 
