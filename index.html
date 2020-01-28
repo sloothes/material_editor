@@ -48,13 +48,13 @@
 			//	document.body.appendChild( container );
 
 			//	Camera.
-				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 20000 );
+				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 200000 );
 				camera.position.set( 100, 200, 300 );
 
 			//	Scene.
 				scene = new THREE.Scene();
 				scene.background = new THREE.Color( 0xa0a0a0 );
-				scene.fog = new THREE.Fog( 0xa0a0a0, 2000, 10000 );
+				scene.fog = new THREE.Fog( 0xa0a0a0, 20000, 100000 );
 
 			//	Lights.
 				light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
