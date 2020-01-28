@@ -68,7 +68,7 @@
 
 									var contents = event.target.result;
 
-									var loader = new THREE.FBXLoader( manager );
+									var loader = new THREE.FBXLoader();
 									var object = loader.parse( contents );
 
 
@@ -84,7 +84,7 @@
 
 									var contents = event.target.result;
 
-									var loader = new THREE.ColladaLoader( manager );
+									var loader = new THREE.ColladaLoader();
 									var collada = loader.parse( contents );
 
 									collada.scene.name = filename;
