@@ -27,12 +27,11 @@
 
 		</div>
 
-
-
-
 		<script>
-			(function(){
+			(function(){|
+
 				var button = document.getElementById("import-model");
+
 				button.addEventListener("click", function(){
 					var input = document.createElement("input");
 					input.type = "file";
@@ -52,7 +51,65 @@
 							console.log( "Loading", filename, size, progress );
 						});
 
-						
+						switch ( extension ) {
+
+							case 'fbx':
+
+								reader.addEventListener( 'load', function ( event ) {
+
+									var contents = event.target.result;
+
+									var loader = new THREE.FBXLoader( manager );
+									var object = loader.parse( contents );
+
+									editor.addAnimation( object, object.animations );
+									editor.execute( new AddObjectCommand( editor, object ) );
+
+								}, false );
+
+								reader.readAsArrayBuffer( file );
+
+							break;
+
+							case 'dae':
+
+								reader.addEventListener( 'load', function ( event ) {
+
+									var contents = event.target.result;
+
+									var loader = new THREE.ColladaLoader( manager );
+									var collada = loader.parse( contents );
+
+									collada.scene.name = filename;
+
+									editor.addAnimation( collada.scene, collada.animations );
+									editor.execute( new AddObjectCommand( editor, collada.scene ) );
+
+								}, false );
+
+								reader.readAsText( file );
+
+							break;
+
+							case 'obj':
+
+								reader.addEventListener( 'load', function ( event ) {
+
+									var contents = event.target.result;
+
+									var object = new THREE.OBJLoader().parse( contents );
+									object.name = filename;
+
+									editor.execute( new AddObjectCommand( editor, object ) );
+
+								}, false );
+
+								reader.readAsText( file );
+
+							break;
+
+						}
+
 					});
 					
 					input.click();
