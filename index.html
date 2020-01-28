@@ -74,6 +74,8 @@
 									var loader = new THREE.FBXLoader();
 									var object = loader.parse( contents );
 
+									console.log( object );
+
 
 								}, false );
 
@@ -91,6 +93,7 @@
 									var collada = loader.parse( contents );
 
 									collada.scene.name = filename;
+									console.log( collada );
 
 
 								}, false );
@@ -107,6 +110,8 @@
 
 									var object = new THREE.OBJLoader().parse( contents );
 									object.name = filename;
+									
+									console.log( object );
 
 
 								}, false );
