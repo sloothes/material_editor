@@ -48,13 +48,13 @@
 			//	document.body.appendChild( container );
 
 			//	Camera.
-				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
+				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 20000 );
 				camera.position.set( 100, 200, 300 );
 
 			//	Scene.
 				scene = new THREE.Scene();
 				scene.background = new THREE.Color( 0xa0a0a0 );
-				scene.fog = new THREE.Fog( 0xa0a0a0, 200, 1000 );
+				scene.fog = new THREE.Fog( 0xa0a0a0, 2000, 10000 );
 
 			//	Lights.
 				light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
@@ -78,7 +78,7 @@
 				scene.add( mesh );
 
 			//	Ground helper.
-				var grid = new THREE.GridHelper( 2000, 20, 0x000000, 0x000000 );
+				var grid = new THREE.GridHelper( 5000, 10, 0x000000, 0x000000 );
 				grid.material.opacity = 0.2;
 				grid.material.transparent = true;
 				scene.add( grid );
