@@ -53,17 +53,15 @@
 
 						switch ( extension ) {
 
-							case 'fbx':
+							case "fbx":
 
-								reader.addEventListener( 'load', function ( event ) {
+								reader.addEventListener( "load", function ( event ) {
 
 									var contents = event.target.result;
 
 									var loader = new THREE.FBXLoader( manager );
 									var object = loader.parse( contents );
 
-									editor.addAnimation( object, object.animations );
-									editor.execute( new AddObjectCommand( editor, object ) );
 
 								}, false );
 
@@ -71,9 +69,9 @@
 
 							break;
 
-							case 'dae':
+							case "dae":
 
-								reader.addEventListener( 'load', function ( event ) {
+								reader.addEventListener( "load", function ( event ) {
 
 									var contents = event.target.result;
 
@@ -82,8 +80,6 @@
 
 									collada.scene.name = filename;
 
-									editor.addAnimation( collada.scene, collada.animations );
-									editor.execute( new AddObjectCommand( editor, collada.scene ) );
 
 								}, false );
 
@@ -91,16 +87,15 @@
 
 							break;
 
-							case 'obj':
+							case "obj":
 
-								reader.addEventListener( 'load', function ( event ) {
+								reader.addEventListener( "load", function ( event ) {
 
 									var contents = event.target.result;
 
 									var object = new THREE.OBJLoader().parse( contents );
 									object.name = filename;
 
-									editor.execute( new AddObjectCommand( editor, object ) );
 
 								}, false );
 
