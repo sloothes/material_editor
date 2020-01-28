@@ -19,27 +19,18 @@
 
 		<script src="/threejs/108/build/three.js"></script>
 		<script src="/threejs/108/examples/js/controls/EditorControls.js"></script>
-		<!-- FBX -->
-		<script src="/threejs/108/examples/js/libs/inflate.min.js"></script>
+		<script src="/threejs/108/examples/js/libs/inflate.min.js"></script> <!-- FBX -->
 		<script src="/threejs/108/examples/js/loaders/FBXLoader.js"></script>
 		<script src="/threejs/108/examples/js/loaders/OBJLoader.js"></script>
 		<script src="/threejs/108/examples/js/loaders/MTLLoader.js"></script>
 		<script src="/threejs/108/examples/js/loaders/ColladaLoader.js"></script>
 
 
-		<div style="position:absolute;top:0;right:0;width:350px;height:100%;border:1px solid;padding:25px;">
+		<!-- div style="position:absolute;top:0;right:0;width:350px;height:100%;border:1px solid;padding:25px;">
 
 			<div id="import-model" class="form-control btn btn-primary btn-white-outline gradient-btn" style="width:100%;height:40px;font-size:large;">Import model</div>
 
-		</div>
-
-		<script>
-
-			Number.prototype.format = function (){
-				return this.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-			};
-
-		</script>
+		</div -->
 
 		<script>
 
@@ -132,16 +123,26 @@
 
 		<script>
 
+			Number.prototype.format = function (){
+				return this.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+			};
+
 			(function(){
 
-				var button = document.getElementById("import-model");
+				var sidepanel = document.createElement("div");
+				sidepanel.style.cssText = "position:absolute;top:0;right:0;width:350px;height:100%;border:1px solid;padding:25px;";
+				
+				var button = document.createElement("div");
+				button.textContent = "Import model";
+				button.style.cssText = "width:100%;height:40px;font-size:large;";
+				button.classList.add( "form-control", "btn", "btn-primary", "btn-white-outline", "gradient-btn" );
 
 				button.addEventListener("click", function(){
 					var input = document.createElement("input");
 					input.type = "file";
 					input.style.display = "none";
 					input.setAttribute("accept", ".fbx,.dae,.obj");
-				//	input.setAttribute("multiple", ""); // true
+				//	input.setAttribute("multiple", ""); // it set to true.
 					input.addEventListener( "change", function(){
 
 						var file = input.files[0];
@@ -220,6 +221,10 @@
 					input.click();
 
 				});
+
+				sidepanel.appendChild( button );
+				document.body.appendChild( sidepanel );
+
 			})();
 		</script>
 
